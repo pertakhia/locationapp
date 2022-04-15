@@ -1,20 +1,23 @@
-$(document).ready(function () {
-  $("p").click(function () {
-    $(this).hide()
-    console.log("ds")
-  })
-})
-
+/**
+ * @description: click on the button to get current location and show the google maps link
+ * @param {type}: any
+ */
 $(document).ready(function () {
   $("#btn").click(function () {
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        console.log("location", position)
-        $(".test").text()
-      },
-      function () {
-        alert("dont access")
-      }
-    )
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const { latitude, longitude } = position.coords
+        $("#lat").text(latitude)
+        $("#lon").text(longitude)
+        $("#link")
+          .attr(
+            "href",
+            `https://www.google.com/maps/@${latitude},${longitude},15z`
+          )
+          .text("Google Maps")
+      })
+    } else {
+      alert("Geolocation is not supported by this browser.")
+    }
   })
 })
