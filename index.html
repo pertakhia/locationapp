@@ -8,22 +8,38 @@
       content="ადგილმდებარეობის მაგენირებელი აპლიკაცია"
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Location</title>
   </head>
   <body>
     <section class="container">
-      <header>
-        <button id="btn">click</button>
-      </header>
-      <div class="center">
-        <h1>your latitude: <span id="lat"></span></h1>
-        <h1>longitude: <span id="lon"></span></h1>
-        <span class="link-span"
-          ><a href="" id="link" target="_blank">...</a></span
-        >
-      </div>
+      <section class="left-side">
+        <div class="click-btn">
+          <button id="btn">click</button>
+        </div>
+        <div class="center">
+          <h1>your latitude: <span id="lat"></span></h1>
+          <h1>longitude: <span id="lon"></span></h1>
+          <span class="link-span"
+            ><a href="" id="link" target="_blank">...</a></span
+          >
+        </div>
+      </section>
+      <div id="map"></div>
     </section>
+
     <script>
       document.addEventListener(
         "contextmenu",
