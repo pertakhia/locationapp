@@ -5,8 +5,8 @@
 $(document).ready(function () {
   $("#btn").click(function () {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const { latitude, longitude } = position.coords
+      const watchId = navigator.geolocation.watchPosition((position) => {
+        const { latitude, longitude} = position.coords
         $("#lat").text(latitude)
         $("#lon").text(longitude)
         $("#link")
@@ -28,7 +28,11 @@ $(document).ready(function () {
           .addTo(map)
           .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
           .openPopup()
+        // L.circle(coords, accuracy).addTo(map)
+
       })
+      watchId();
+      navigator.geolocation.clearWatch(watchId);
     } else {
       alert("Geolocation is not supported by this browser.")
     }
